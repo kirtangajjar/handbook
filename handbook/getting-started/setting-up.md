@@ -9,7 +9,7 @@ It's assumed that you've installed EasyEngine as ee installer script installs re
 
 Other than that, you need following tools - 
 
- * [hub](https://github.com/github/hub) (Not required but strongly recommended).
+* [hub](https://github.com/github/hub) (Not required but strongly recommended).
 
 
 ## Setup EasyEngine repo
@@ -31,11 +31,13 @@ cd easyengine && composer install --prefer-source
 ```bash
 echo "alias ee='sudo $(pwd)/bin/ee'" >> ~/.bashrc  # Replace bashrc with zshrc if you're using zsh
 ```
+
 ## Steps for working on core repository
 
 1. Follow steps in [Setup EasyEngine repo](#Setup-EasyEngine-repo)
 
 2. Fork easyengine core repo 
+
 ```bash
 hub fork  # Assuming you're in easyengine directory
 ```
@@ -45,6 +47,7 @@ hub fork  # Assuming you're in easyengine directory
 1. Follow steps in [Setup EasyEngine repo](#Setup-EasyEngine-repo)
 
 2. Fork the command you want to work on.
+
 ```bash
 cd vendor/easyengine/<command> && hub fork
 ```
@@ -54,26 +57,26 @@ cd vendor/easyengine/<command> && hub fork
 4. Push the branch to your repo(use `git remote -v` to checkout your remotes)
 
 5. Submit pull request to the command either by using github UI or with `hub` command
+
 ```bash
 hub pull-request
 ```
 
-## Steps for creating a new command(TODO)
+## Steps for creating a new command
 
-1. Fork the [command template repository](https://github.com/EasyEngine/command-template) and rename it to the command you want to create. This will now look like `author/command-name` in your github.
+1. Clone/Fork the [command template repository](https://github.com/EasyEngine/command-template) and rename it to the command you want to create.
 
-2. Update the `name` and `homepage` in the `composer.json` of the  cloned repository. If the name is not updated properly then composer update/install with it will fail. 
+2. Update the `name` and `homepage` in the `composer.json` of the  cloned repository. If the name is not updated properly then composer update/install with it will fail.
 
-3. Clone the EasyEngine core repository locally and checkout the development branch.
-```bash
-git clone git@github.com:EasyEngine/easyengine.git && git checkout develop-v4 
-```
-4. Update the `composer.json` in the EasyEngine core repository, add the following in `require`:
-```
+3. Update the `composer.json` in the EasyEngine core repository, add the following in `require`:
+
+```json
 "author/command-name": "dev-master"
 ```
+
 Also, append the following section in the `composer.json` for development:
-```
+
+```json
 "repositories": {
     "author/command-name": {
         "type": "path",
@@ -84,10 +87,12 @@ Also, append the following section in the `composer.json` for development:
 
 Or, you can add your repository to packagist and run `composer reqiure author/command-name`.
 
-5. Run `composer update` in the core repository after this.
-6. After that, try running the default command `hello-world` given in the template, it should give a success message as below by running it from the easyengine repository root:
+4. Run `composer update` in the core repository after this.
+
+5. After that, try running the default command `hello-world` given in the template, it should give a success message as below by running it from the easyengine repository root:
+
 ```bash
-$ ./bin/ee hello-world
+$ ee hello-world
 Success: Hello world.
 ```
 
