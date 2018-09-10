@@ -42,6 +42,12 @@ echo "alias ee='sudo $(pwd)/bin/ee'" >> ~/.bashrc  # Replace bashrc with zshrc i
 hub fork  # Assuming you're in easyengine directory
 ```
 
+3. Make the changes you want and commit them to seperate branch
+
+4. Push the branch to your repo(use `git remote -v` to checkout your remotes)
+
+5. Submit pull request to the command either by using github UI or with `hub` command
+
 ## Steps for working on existing commands
 
 1. Follow steps in [Setup EasyEngine repo](#Setup-EasyEngine-repo)
@@ -97,3 +103,14 @@ Success: Hello world.
 ```
 
 Note: These manual steps for setting up a new EasyEngine command will be replaced by a scaffold command.
+
+## Steps for creating a new site type (TODO)
+
+This section will be added in future
+
+## Steps to update EasyEngine documentation
+
+Documentation of all the commands is generated from their doc comments and it's kept up to date by a cron job.
+
+If you want to update developer documentation (like this document), it's written in markdown format on [handbook command repo](https://github.com/EasyEngine/handbook/tree/master/handbook). 
+You can fork it and send a PR.
